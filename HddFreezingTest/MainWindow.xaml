@@ -41,6 +41,7 @@
                 StrokeDashCap="Round"
                 StrokeThickness="2" />
             <Button
+                x:Name="Btn"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="Button_Click"

@@ -30,6 +30,7 @@ namespace HddFreezingTest
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Btn.IsEnabled = false;
             GetRandomDir(_currentDir);
         }
         private string _rootDir = "H:\\"; //My USB-attached RAID
@@ -67,7 +68,7 @@ namespace HddFreezingTest
                     }
                     else
                     {
-                        Debug.Write("No more dirs, going back to root");
+                        Debug.WriteLine("No more dirs, going back to root");
                         newdir = _rootDir;
                     }
                    
@@ -77,15 +78,17 @@ namespace HddFreezingTest
                     newdir = dir;
                 }
             });
-            Debug.Write(newdir);
+            Debug.WriteLine(newdir);
 
             _currentDir = newdir;
+            Btn.IsEnabled = true;
         }
 
         public static bool DirectoryExists(string path)
         {
             //same freezing issue with this one, but sooner or later I need more attributes, and the other one is faster anyway
             //return Directory.Exists(path); - 
+            //System.Threading.Thread.Sleep(3000);
 
             uint attributes = GetFileAttributes(path);
             if (attributes != 0xFFFFFFFF)
